@@ -1,19 +1,30 @@
+/* #24707a;
+  --red: #fc145a; */
 :root {
   --blue: #24707a;
-  --red: #fc145a
+  --red: #fc145a;
 }
-
+* {
+  direction: rtl;
+}
+@font-face {
+  font-family: "kolli";
+  src: url("./components/assets/IRAN\ Sans\ Regular.ttf");
+}
 .App {
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  direction: rtl;
 }
 body {
   margin: 0%;
   padding: 0%;
+  font-family: kolli;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 18px;
 }
 .header {
   /* flex: 30%; */
@@ -78,7 +89,7 @@ body {
 .group {
   margin: 10px;
   background-color: white;
-  width: 50pt;
+  width: fit-content;
   color: var(--blue);
   border: var(--blue);
   border-style: dashed;
@@ -125,6 +136,6 @@ body {
   cursor: pointer;
 }
 
-#doneContainer span{
+#doneContainer span {
   background-color: gray;
 }

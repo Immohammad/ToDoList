@@ -5,7 +5,7 @@ function Tasks({ task, completeTask }) {
     <div className="task">
       <div className="content">
         <span> {task.taskName}</span> <span>{task.taskDescription}</span>{" "}
-        <span style={{ flex: "25%" }}>{task.deadline}</span>
+        <span style={{ flex: "25%" }}>{task.date}</span>
       </div>
       <button
         onClick={() => {
