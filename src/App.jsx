@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import Done from "./components/done";
 import Tasks from "./components/tasks";
 import { useForm } from "react-hook-form";
+import TaskPart from "./components/taskPart";
 
 function App() {
-  // const [task, setTask] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [deadline, setDeadline] = useState(0);
   const [todoList, setTodoList] = useState([]);
   const [doneList, setDoneList] = useState([]);
   const {
@@ -33,15 +31,6 @@ function App() {
     // setDeadline(0);
   };
 
-  const complete = (taskToDelete) => {
-    setTodoList(
-      todoList.filter((task) => {
-        return task !== taskToDelete;
-      })
-    );
-    setDoneList([...doneList, taskToDelete]);
-  };
-
   const add = (taskToAdd) => {
     setDoneList(
       doneList.filter((task) => {
@@ -49,16 +38,6 @@ function App() {
       })
     );
     setTodoList([...todoList, taskToAdd]);
-  };
-
-  const compare = (a, b) => {
-    if (a.date < b.date) {
-      return -1;
-    }
-    if (a.date > b.date) {
-      return 1;
-    }
-    return 0;
   };
 
   return (
@@ -85,7 +64,7 @@ function App() {
           <div>
             <label className="form__label">توضیحات</label>
             <textarea
-              placeholder="اختیاری"
+              placeholder="اجباری"
               className="form__input"
               {...register("description")}
               required
@@ -95,7 +74,7 @@ function App() {
           <div style={{ display: "flex", justifyContent: "center" }}>
             <input
               type="submit"
-              value="Add"
+              value="افزودن"
               className="button-24"
               style={{ justifyContent: "center" }}
             />
@@ -109,15 +88,12 @@ function App() {
           width: "100%",
         }}
       >
-        <div className="toDos" style={{ borderRight: "2px dashed #50c878" }}>
-          <span className="group">برای انجام</span>
-          {
-            // todoList.map((task: ITask, key: number) => {
-            todoList.sort(compare).map((task, key) => {
-              return <Tasks key={key} task={task} completeTask={complete} />;
-            })
-          }
-        </div>
+        <TaskPart
+          list={todoList}
+          changeList={setTodoList}
+          deleted={doneList}
+          changeDeleted={setDoneList}
+        />
         <div className="toDos">
           <span
             className="group"

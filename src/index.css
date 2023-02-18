@@ -4,12 +4,13 @@
   --blue: #24707a;
   --red: #fc145a;
 }
-* {
-  direction: rtl;
-}
 @font-face {
   font-family: "kolli";
   src: url("./components/assets/IRAN\ Sans\ Regular.ttf");
+}
+* {
+  direction: rtl;
+  font-family: kolli;
 }
 .App {
   display: flex;
@@ -21,13 +22,11 @@
 body {
   margin: 0%;
   padding: 0%;
-  font-family: kolli;
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
 }
 .header {
-  /* flex: 30%; */
   background-color: var(--blue);
   width: 100%;
   display: flex;
@@ -35,10 +34,10 @@ body {
   align-items: center;
 }
 
-.form__label {
-  transition: all 0.3s;
-  transform: translateY(0rem);
+label {
+  display: inline-block;
   color: white;
+  width: 60px;
 }
 
 .form__input {
@@ -48,7 +47,7 @@ body {
   margin: 0.5rem;
   transition: all 0.3s;
   vertical-align: middle;
-  width: 200px;
+  width: 250px;
 }
 
 .button-24 {
@@ -123,19 +122,54 @@ body {
   font-size: 18px;
   border-right: none;
   background-color: var(--blue);
+  /* padding: 5px; */
 }
-
 .task button {
   flex: 5%;
   height: 100%;
   border: none;
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+}
+.task #delete {
   background-color: #fc145a;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
-  color: white;
-  cursor: pointer;
+}
+.task #edit {
+  border-right: none;
+  background-color: #e2bf44;
+  border: 1px solid white;
 }
 
 #doneContainer span {
   background-color: gray;
+}
+
+#formOverlay {
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  /* z-index: 2; */
+  top: 0;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+#editForm {
+  background-color: #ffffff;
+  color: black;
+  width: fit-content;
+  height: fit-content;
+  border-radius: 0.2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#editForm label{
+  color:black;
 }
