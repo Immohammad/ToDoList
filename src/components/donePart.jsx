@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
+
 function DonePart({ doneList, changeDoneList }) {
-  // useEffect(() => {},[doneList])
   const deleteTask = (taskToDelete) => {
     changeDoneList(
       doneList.filter((task) => {
@@ -21,13 +21,13 @@ function DonePart({ doneList, changeDoneList }) {
   };
 
   return (
-    <div className="toDos">
+    <div className="toDos" style={{minHeight: "200px"}}>
       <span
         className="group"
         style={{
           color: "#fc145a",
           border: "#fc145a",
-          borderStyle: "dashed",
+          borderStyle: "dashed", 
         }}
       >
         انجام‌شده
@@ -37,7 +37,7 @@ function DonePart({ doneList, changeDoneList }) {
           return (
             <div className="task" key={key}>
               <div className="content" id="doneContainer">
-                <span> {task.taskName}</span> <span>{task.date}</span>{" "}
+                <span> {task.name}</span> <span>{task.date}</span>{" "}
               </div>
               <button
                 onClick={() => {

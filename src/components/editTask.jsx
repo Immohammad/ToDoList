@@ -1,27 +1,26 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 function EditTask({ task, setAsNull }) {
+
   const {
     register,
-    handleSubmit,
-    reset,
-    formState: { errors },
+    handleSubmit
   } = useForm({
     defaultValues: {
-      task: task.taskName,
-      description: task.taskDescription,
+      task: task.name,
+      description: task.description,
     },
   });
-
   const editTask = (data) => {
-    task.taskName = data.task;
-    task.taskDescription = data.description;
+    task.name = data.task;
+    task.description = data.description;
     setAsNull(null);
   };
+
   return (
     <div id="formOverlay">
-      <div onClick={() => setAsNull(null)}>X</div>
+      <div id="exitEdit" onClick={() => setAsNull(null)}><HighlightOffIcon/></div>
       <form onSubmit={handleSubmit(editTask)} id="editForm">
         <div>
           <label className="form__label">عنوان</label>
@@ -32,6 +31,7 @@ function EditTask({ task, setAsNull }) {
             {...register("task")}
             required
             maxLength={120}
+            style={{border:"1px solid #24707a"}}
           />
         </div>
         <div>
@@ -42,13 +42,14 @@ function EditTask({ task, setAsNull }) {
             {...register("description")}
             required
             maxLength={250}
+            style={{border:"1px solid #24707a"}}
           ></textarea>
         </div>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <input
             type="submit"
             value="ویرایش"
-            className="button-24"
+            className="submitButtons"
             style={{ justifyContent: "center" }}
           />
         </div>

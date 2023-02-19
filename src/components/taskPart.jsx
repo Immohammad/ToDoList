@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Tasks from "./tasks";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import EditTask from "./editTask";
@@ -14,7 +13,6 @@ function TaskPart({ list, changeList, deleted, changeDeleted }) {
       })
     );
     changeDeleted([...deleted, taskToDelete]);
-    console.log(deleted);
   };
   const compare = (a, b) => {
     if (a.date < b.date) {
@@ -44,21 +42,20 @@ function TaskPart({ list, changeList, deleted, changeDeleted }) {
           return (
             <div className="task" key={key}>
               <div className="content">
-                <span> {task.taskName}</span>{" "}
-                <span>{task.taskDescription}</span>{" "}
+                <span> {task.name}</span> <span>{task.description}</span>{" "}
                 <span style={{ flex: "25%" }}>{task.date}</span>
+                <button id="edit" onClick={() => setTaskForEdit(task)}>
+                  <EditIcon />
+                </button>
+                <button
+                  id="delete"
+                  onClick={() => {
+                    complete(task);
+                  }}
+                >
+                  <DeleteIcon />
+                </button>
               </div>
-              <button id="edit" onClick={() => setTaskForEdit(task)}>
-                <EditIcon />
-              </button>
-              <button
-                id="delete"
-                onClick={() => {
-                  complete(task);
-                }}
-              >
-                <DeleteIcon />
-              </button>
             </div>
           );
         })}
