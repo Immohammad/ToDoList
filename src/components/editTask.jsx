@@ -1,8 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-function EditTask({ task, setAsNull }) {
 
+function EditTask({ task, setAsNull }) {
+  // first argument is the task that we want to edit
+  // second argument is a method that erases task value and
+  // closes overlay
   const {
     register,
     handleSubmit

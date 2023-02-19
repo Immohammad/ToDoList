@@ -1,13 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
 import TaskPart from "./components/taskPart";
 import DonePart from "./components/donePart";
 import useLocalStorage from "./components/useLocalStorage";
 
 function App() {
+  // two lists of works. first for to do and second for done.
+  // we are using useLocalStorage custom hook to save lists on browser
+  // local storage in client side
   const [todoList, setTodoList] = useLocalStorage("todo", []);
   const [doneList, setDoneList] = useLocalStorage("done", []);
+
+  // forms are developed by react-hook-form
   const { register, handleSubmit, reset } = useForm();
+
+  // using Date constructor for saving date
   const current = new Date();
   const now = `${current.getFullYear()}/${
     current.getMonth() + 1

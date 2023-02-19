@@ -4,6 +4,10 @@ import EditIcon from "@mui/icons-material/Edit";
 import EditTask from "./editTask";
 
 function TaskPart({ list, changeList, deleted, changeDeleted }) {
+  // this component is fully included our tasks part.
+  // also edit form is to shape of a overlay on this component
+  // first argument of this component is to do list; second is it's setter.
+  // third is done list and fourth is it's setter.
   const [taskForEdit, setTaskForEdit] = useState(null);
 
   const complete = (taskToDelete) => {
@@ -16,6 +20,8 @@ function TaskPart({ list, changeList, deleted, changeDeleted }) {
     else changeDeleted([taskToDelete]);
     
   };
+
+  // this method will be used for sorting works by create time
   const compare = (a, b) => {
     if (a.date < b.date) {
       return -1;
