@@ -1,6 +1,15 @@
 import React from 'react'
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 function done({ task, addTask }) {
+  const deleteTask = (addTask) => {
+    changeList(
+      list.filter((task) => {
+        return task !== taskToDelete;
+      })
+    );
+    changeDeleted([...deleted, taskToDelete]);
+  };
   return (
     <div className="task">
       <div className="content" id="doneContainer">
@@ -10,9 +19,9 @@ function done({ task, addTask }) {
         onClick={() => {
           addTask(task);
         }}
-        style={{backgroundColor: "#50c878"}}
+        style={{backgroundColor: "red"}}
       >
-        +
+        <DeleteForeverIcon/>
       </button>
     </div>
   );

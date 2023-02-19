@@ -1,17 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Tasks from "./tasks";
-import { useForm } from "react-hook-form";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import EditTask from "./editTask";
 
 function TaskPart({ list, changeList, deleted, changeDeleted }) {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
-
+  const [taskForEdit, setTaskForEdit] = useState(null);
   const complete = (taskToDelete) => {
     changeList(
       list.filter((task) => {
@@ -29,7 +23,7 @@ function TaskPart({ list, changeList, deleted, changeDeleted }) {
     }
     return 0;
   };
-  const editTask = (task) => {};
+
   const goToEdit = (task) => {
     document.getElementById("formOverlay").style.display = "block";
   };
@@ -43,45 +37,9 @@ function TaskPart({ list, changeList, deleted, changeDeleted }) {
         minHeight: "400px",
       }}
     >
-      <div id="formOverlay">
-        <form onSubmit={handleSubmit(editTask)} id='editForm'>
-          <div>
-            <label className="form__label">عنوان</label>
-            <input
-              type="text"
-              placeholder="اجباری"
-              className="form__input"
-              {...register("task")}
-              required
-              maxLength={120}
-            />
-            {/* {errors.task && errors.task.type === "required" && (
-              <span>اجباری است</span>
-            )}
-            {errors.task && errors.task.type === "maxLength" && (
-              <span>حداکثر ۱۲۰ کاراکتر</span>
-            )} */}
-          </div>
-          <div>
-            <label className="form__label">توضیحات</label>
-            <textarea
-              placeholder="اجباری"
-              className="form__input"
-              {...register("description")}
-              required
-              maxLength={250}
-            ></textarea>
-          </div>
-          <div style={{ display: "flex", justifyContent: "center" }}>
-            <input
-              type="submit"
-              value="ویرایش"
-              className="button-24"
-              style={{ justifyContent: "center" }}
-            />
-          </div>
-        </form>
-      </div>
+      {taskForEdit && (
+        <EditTask task={taskForEdit} setAsNull={setTaskForEdit} />
+      )}
       <span className="group">برای انجام</span>
       {
         // todoList.map((task: ITask, key: number) => {
@@ -94,7 +52,7 @@ function TaskPart({ list, changeList, deleted, changeDeleted }) {
                 <span>{task.taskDescription}</span>{" "}
                 <span style={{ flex: "25%" }}>{task.date}</span>
               </div>
-              <button id="edit" onClick={() => goToEdit()}>
+              <button id="edit" onClick={() => setTaskForEdit(task)}>
                 <EditIcon />
               </button>
               <button

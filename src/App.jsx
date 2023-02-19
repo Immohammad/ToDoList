@@ -106,7 +106,7 @@ function App() {
             انجام‌شده
           </span>
           {doneList.map((task, key) => {
-            return <Done key={key} task={task} addTask={add} />;
+            return <Done key={key} task={task} addTask={setDoneList} />;
           })}
         </div>
       </div>
