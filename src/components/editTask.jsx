@@ -50,7 +50,8 @@ function EditTask({ task, setAsNull }) {
             type="submit"
             value="ویرایش"
             className="submitButtons"
-            style={{ justifyContent: "center", backgroundColor:"#e2bf44" }}
+            id="editButton"
+            style={{ justifyContent: "center"}}
           />
         </div>
       </form>

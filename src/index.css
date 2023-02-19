@@ -1,9 +1,10 @@
 /* #24707a;
   --red: #fc145a; */
 :root {
-  --blue: #24707a;
+  --blue: #175760;
   --red: #fc145a;
   --green:#50c878;
+  --yellow: #e2bf44;
 }
 @font-face {
   font-family: "kolli";
@@ -165,7 +166,7 @@ textarea {
 }
 .task #edit {
   border-right: none;
-  background-color: #e2bf44;
+  background-color: var(--yellow);
   border: 1px solid white;
 }
 /* *****tasks******* */
@@ -214,5 +215,15 @@ textarea {
   cursor: pointer;
   display: inline-block;
   transform: scale(1.6);
+}
+#editButton{
+  background: var(--yellow);
+  border: 1px solid var(--yellow);
+}
+#editButton:hover,
+#editButton:active {
+  background-color: initial;
+  background-position: 0 0;
+  color: var(--yellow);
 }
 /* *****edit******* */
