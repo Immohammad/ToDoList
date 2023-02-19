@@ -38,7 +38,6 @@ function DonePart({ doneList, changeDoneList }) {
             <div className="task" key={key}>
               <div className="content" id="doneContainer">
                 <span> {task.name}</span> <span>{task.date}</span>{" "}
-              </div>
               <button
                 onClick={() => {
                   deleteTask(task);
@@ -47,6 +46,7 @@ function DonePart({ doneList, changeDoneList }) {
               >
                 <DeleteForeverOutlinedIcon />
               </button>
+              </div>
             </div>
           );
         })}

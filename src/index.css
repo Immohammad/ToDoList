@@ -3,6 +3,7 @@
 :root {
   --blue: #24707a;
   --red: #fc145a;
+  --green:#50c878;
 }
 @font-face {
   font-family: "kolli";
@@ -59,8 +60,8 @@ textarea {
 }
 
 .submitButtons {
-  background: #50c878;
-  border: 1px solid #50c878;
+  background: var(--green);
+  border: 1px solid var(--green);
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
   box-sizing: border-box;
@@ -78,7 +79,7 @@ textarea {
 .submitButtons:active {
   background-color: initial;
   background-position: 0 0;
-  color: #50c878;
+  color: var(--green);
 }
 .submitButtons:active {
   opacity: 0.5;
@@ -125,7 +126,7 @@ textarea {
 .task {
   width: 80%;
   height: 50px;
-  /* display: flex; */
+  display: flex;
   color: white;
   margin: 15px;
 }

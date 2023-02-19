@@ -12,7 +12,9 @@ function TaskPart({ list, changeList, deleted, changeDeleted }) {
         return task !== taskToDelete;
       })
     );
-    changeDeleted([...deleted, taskToDelete]);
+    if (deleted) changeDeleted([...deleted, taskToDelete]);
+    else changeDeleted([taskToDelete]);
+    
   };
   const compare = (a, b) => {
     if (a.date < b.date) {

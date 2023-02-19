@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import TaskPart from "./components/taskPart";
 import DonePart from "./components/donePart";
+import useLocalStorage from "./components/useLocalStorage";
 
 function App() {
-  const [todoList, setTodoList] = useState([]);
-  const [doneList, setDoneList] = useState([]);
+  const [todoList, setTodoList] = useLocalStorage("todo", []);
+  const [doneList, setDoneList] = useLocalStorage("done", []);
   const { register, handleSubmit, reset } = useForm();
   const current = new Date();
   const now = `${current.getFullYear()}/${
@@ -18,7 +19,8 @@ function App() {
       description: data.description,
       date: now,
     };
-    setTodoList([...todoList, newTask]);
+    if (todoList) setTodoList([...todoList, newTask]);
+    else setTodoList([newTask]);
     reset();
   };
 
@@ -57,9 +59,7 @@ function App() {
           </div>
         </form>
       </div>
-      <div
-      id="listsContainer"
-      >
+      <div id="listsContainer">
         <TaskPart
           list={todoList}
           changeList={setTodoList}

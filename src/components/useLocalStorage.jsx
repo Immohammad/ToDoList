@@ -1,11 +1,11 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 
 const useLocalStorage = (storageKey, fallbackState) => {
   const [value, setValue] = useState(
-    JSON.parse(localStorage.getItem(storageKey)) ?? fallbackState
+    typeof window === "undefined" ?  fallbackState: JSON.parse(localStorage.getItem(storageKey))
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     localStorage.setItem(storageKey, JSON.stringify(value));
   }, [value, storageKey]);
 
