@@ -106,6 +106,7 @@ textarea {
   text-align: center;
 }
 
+
 #listsContainer {
   display: grid;
   grid-template-columns: 2fr 1fr;
