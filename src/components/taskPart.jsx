@@ -6,6 +6,7 @@ import EditTask from "./editTask";
 
 function TaskPart({ list, changeList, deleted, changeDeleted }) {
   const [taskForEdit, setTaskForEdit] = useState(null);
+
   const complete = (taskToDelete) => {
     changeList(
       list.filter((task) => {
@@ -13,6 +14,7 @@ function TaskPart({ list, changeList, deleted, changeDeleted }) {
       })
     );
     changeDeleted([...deleted, taskToDelete]);
+    console.log(deleted);
   };
   const compare = (a, b) => {
     if (a.date < b.date) {
@@ -22,10 +24,6 @@ function TaskPart({ list, changeList, deleted, changeDeleted }) {
       return 1;
     }
     return 0;
-  };
-
-  const goToEdit = (task) => {
-    document.getElementById("formOverlay").style.display = "block";
   };
 
   return (
@@ -41,10 +39,8 @@ function TaskPart({ list, changeList, deleted, changeDeleted }) {
         <EditTask task={taskForEdit} setAsNull={setTaskForEdit} />
       )}
       <span className="group">برای انجام</span>
-      {
-        // todoList.map((task: ITask, key: number) => {
+      {list &&
         list.sort(compare).map((task, key) => {
-          //    <Tasks key={key} task={task} completeTask={complete} />;
           return (
             <div className="task" key={key}>
               <div className="content">
@@ -65,8 +61,7 @@ function TaskPart({ list, changeList, deleted, changeDeleted }) {
               </button>
             </div>
           );
-        })
-      }
+        })}
     </div>
   );
 }

@@ -3,6 +3,7 @@ import Done from "./components/done";
 import Tasks from "./components/tasks";
 import { useForm } from "react-hook-form";
 import TaskPart from "./components/taskPart";
+import DonePart from "./components/donePart";
 
 function App() {
   const [todoList, setTodoList] = useState([]);
@@ -94,7 +95,8 @@ function App() {
           deleted={doneList}
           changeDeleted={setDoneList}
         />
-        <div className="toDos">
+        <DonePart doneList={doneList} changeDoneList={setDoneList}/>
+        {/* <div className="toDos">
           <span
             className="group"
             style={{
@@ -108,7 +110,7 @@ function App() {
           {doneList.map((task, key) => {
             return <Done key={key} task={task} addTask={setDoneList} />;
           })}
-        </div>
+        </div> */}
       </div>
     </div>
   );

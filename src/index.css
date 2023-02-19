@@ -170,6 +170,13 @@ label {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-#editForm label{
-  color:black;
+#editForm label {
+  color: black;
+}
+#deleteForEver {
+  background-color: white;
+  border: 1px solid gray;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  color: red;
 }

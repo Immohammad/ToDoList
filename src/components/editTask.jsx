@@ -17,6 +17,7 @@ function EditTask({ task, setAsNull }) {
   const editTask = (data) => {
     task.taskName = data.task;
     task.taskDescription = data.description;
+    setAsNull(null);
   };
   return (
     <div id="formOverlay">
@@ -32,12 +33,6 @@ function EditTask({ task, setAsNull }) {
             required
             maxLength={120}
           />
-          {/* {errors.task && errors.task.type === "required" && (
-              <span>اجباری است</span>
-            )}
-            {errors.task && errors.task.type === "maxLength" && (
-              <span>حداکثر ۱۲۰ کاراکتر</span>
-            )} */}
         </div>
         <div>
           <label className="form__label">توضیحات</label>
